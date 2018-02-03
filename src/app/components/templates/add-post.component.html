@@ -1,0 +1,6 @@
+<h2>Write a new post</h2>
+<label for="title">Title: </label>
+<input placeholder="title" name="title" [(ngModel)]="form.title">
+<p>Body:</p>
+<textarea cols="50" rows="15" [(ngModel)]="form.text"></textarea>
+<p><button (click)="submitPost()">Submit Post</button></p>

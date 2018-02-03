@@ -1,0 +1,10 @@
+<p>There are {{posts.length}} posts</p>
+<div *ngFor="let post of posts">
+  <h3> {{post.title}} </h3>
+  <div> {{post.text}} </div>
+  <a [routerLink]="['/readPost', post.id]">More</a>
+   - 
+  <a [routerLink]="['/editPost', post.id]">Edit</a>
+   - 
+  <a [routerLink]="['/deletePost', post.id]">Delete</a>
+</div>
