@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 import { PostService } from '../services/post.service';
 import 'rxjs/add/operator/switchMap';
@@ -19,15 +20,19 @@ export class DeletePostComponent implements OnInit {
     title: '',
     text: '',
   };
+  
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private http: HttpClient
   ){}
+
   ngOnInit(): void{
-    this.route.paramMap
-      .switchMap((params: ParamMap) => this.postService.getPost(+params.get('id')))
-      .subscribe(post => this.post = post);
+    this.http.get<Post>('/api/post/'+this.route.snapshot.params['id']).subscribe(data => {
+      this.post = data;
+      console.log(data);
+    });
   }
 
   home(): void {
@@ -35,7 +40,7 @@ export class DeletePostComponent implements OnInit {
   }
 
   deletePost(): void{
-    this.postService.deletePost(this.post.id);
+    this.http.delete('/api/post/'+this.route.snapshot.params['id']).subscribe();
     this.location.back();
   }
 }

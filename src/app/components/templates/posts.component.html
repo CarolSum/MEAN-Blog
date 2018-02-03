@@ -2,9 +2,9 @@
 <div *ngFor="let post of posts">
   <h3> {{post.title}} </h3>
   <div> {{post.text}} </div>
-  <a [routerLink]="['/readPost', post.id]">More</a>
+  <a [routerLink]="['/readPost', post._id]">More</a>
    - 
-  <a [routerLink]="['/editPost', post.id]">Edit</a>
+  <a [routerLink]="['/editPost', post._id]">Edit</a>
    - 
-  <a [routerLink]="['/deletePost', post.id]">Delete</a>
+  <a [routerLink]="['/deletePost', post._id]">Delete</a>
 </div>

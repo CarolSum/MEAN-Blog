@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Location }  from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 import { PostService } from '../services/post.service';
 import { Post } from '../models/post';
@@ -20,11 +21,16 @@ export class AddPostComponent {
 
   constructor(
     private postService: PostService,
-    private location: Location
+    private location: Location,
+    private http: HttpClient
   ){}
 
   submitPost(): void{
-    this.postService.addPost(this.form);
+    //this.postService.addPost(this.form);
+    this.http.post('/api/post', {
+      title: this.form.title,
+      text: this.form.text
+    }).subscribe();
     this.location.back();
   }
 }

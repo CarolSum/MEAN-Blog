@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+
 
 import { PostService } from '../services/post.service';
 import 'rxjs/add/operator/switchMap';
@@ -11,23 +13,25 @@ import { Post } from '../models/post';
   templateUrl: './templates/read-post.component.html', 
 })
 
-
-
 export class ReadPostComponent implements OnInit {
-  post: Post = {
-    id: null,
-    title: '',
-    text: '',
-  };
+  post = {};
+
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private http: HttpClient
   ){}
+
   ngOnInit(): void{
-    this.route.paramMap
-      .switchMap((params: ParamMap) => this.postService.getPost(+params.get('id')))
-      .subscribe(post => this.post = post);
+    this.getPostDetail(this.route.snapshot.params['id']);
+  }
+
+  getPostDetail(id){
+    this.http.get('/api/post/'+id).subscribe(data => {
+      this.post = data;
+      console.log(data);
+    });
   }
 
   goBack(): void {

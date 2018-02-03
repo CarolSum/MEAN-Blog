@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 import { PostService } from '../services/post.service';
 import 'rxjs/add/operator/switchMap';
 import { Post } from '../models/post';
+
+
 
 @Component({
   selector: 'edit-post',
@@ -14,12 +17,11 @@ import { Post } from '../models/post';
 
 
 export class EditPostComponent {
-  form: Post = {
-    id: null,
+  form = {
     title: '',
     text: '',
   };
-  post: Post = {
+  post:Post = {
     id: null,
     title: '',
     text: '',
@@ -28,18 +30,22 @@ export class EditPostComponent {
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private http: HttpClient
   ){}
 
+
   ngOnInit(): void{
-    this.route.paramMap
-      .switchMap((params: ParamMap) => this.postService.getPost(+params.get('id')))
-      .subscribe(post => {
-        this.post = post;
-        this.form.id = post.id;
-        this.form.title = post.title;
-        this.form.text = post.text;
-      });
+    this.getPostDetail(this.route.snapshot.params['id']);
+  }
+
+  getPostDetail(id){
+    this.http.get<Post>('/api/post/'+id).subscribe(data => {
+      this.post = data;
+      this.form.title = data.title;
+      this.form.text = data.text;
+      console.log(data);
+    });
   }
 
   goBack(): void {
@@ -47,8 +53,7 @@ export class EditPostComponent {
   }
 
   editPost(): void{
-    this.post.title = this.form.title;
-    this.post.text = this.form.text;
+    this.http.put('/api/post/'+this.route.snapshot.params['id'], this.form).subscribe();
     this.location.back();
   }
 }
