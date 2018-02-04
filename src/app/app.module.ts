@@ -12,6 +12,7 @@ import { EditPostComponent } from './components/edit-post.component';
 import { DeletePostComponent } from './components/delete-post.component';
 
 import { PostService } from './services/post.service';
+import { AuthService } from './services/auth.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -31,7 +32,8 @@ import { AppRoutingModule } from './app-routing.module';
     DeletePostComponent,
   ],
   providers: [
-    PostService
+    PostService,
+    AuthService
   ],
   bootstrap:    [ AppComponent ]
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { PostService } from '../services/post.service';
+import { AuthService } from '../services/auth.service';
 
 import { Post } from '../models/post';
 
@@ -18,9 +19,11 @@ interface PostsResponse{
 export class PostsComponent implements OnInit{
   posts: Post[];
   results: string[];
+  isLogin: boolean;
 
   constructor(
     private postService: PostService,
+    private authService: AuthService,
     private http: HttpClient
   ){}
 
@@ -32,6 +35,7 @@ export class PostsComponent implements OnInit{
         post.text = post.text.substr(0, 50) + '...';
       })
     });
+    this.isLogin = this.authService.checkIfLogin();
   }
 
 /*
