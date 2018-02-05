@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 
@@ -8,16 +9,25 @@ import { AuthService } from '../services/auth.service';
 })
 
 export class BannerComponent implements OnInit {
-  user = {};
-  isLogin = false;
+  user = null;
+  isLogin = '';
 
   constructor(
+    private router: Router,
     private authService: AuthService
   ){}
 
   ngOnInit(): void{
-    this.isLogin = this.authService.checkIfLogin();
-    this.user = this.authService.getUser();
+    this.isLogin = this.authService.get('isLogin');
+    this.user = this.authService.getObject('user');
+  }
+
+  SignOut(){
+    this.authService.remove('user');
+    this.authService.remove('isLogin');
+    console.log('signout-signout-signout');
+    window.location.href = '/';
+    //this.router.navigate(['/']);
   }
 
 }

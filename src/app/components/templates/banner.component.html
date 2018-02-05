@@ -11,13 +11,13 @@
   <div class="ui buttons">
       <div class="ui floating dropdown button">
         <i class="icon bars"></i>
-        <div class="menu" *ngIf="isLogin">
-           <a class="item" routerLink="#">欢迎, {{user.name}}</a>
+        <div class="menu" *ngIf="isLogin != false ">
+           <a class="item" [routerLink]="['/user', user._id]">欢迎, {{user.username}}</a>
            <div class="divider"></div>
            <a class="item" routerLink="/addPost">发表文章</a>
-           <a class="item" routerLink="/signout">登出</a> 
+           <span class="item" (click)="SignOut()">登出</span> 
         </div>
-        <div class="menu" *ngIf="!isLogin">
+        <div class="menu" *ngIf="isLogin == false ">
            <a class="item" routerLink="/signin">登录</a>
            <a class="item" routerLink="/signup">注册</a> 
         </div>

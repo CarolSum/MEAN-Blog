@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Post = require('../models/Post.js');
+var sha1 = require('sha1')
 
+var Post = require('../models/Post.js');
+var User = require('../models/User.js');
 
 /* GET ALL Posts. */
 router.get('/posts', function(req, res, next) {
@@ -46,5 +48,87 @@ router.delete('/post/:id', function(req, res, next) {
   });
 });
 
+/* CREATE A NEW USER*/
+router.post('/createUser', function(req, res, next){
+  console.log(req.body);
+  var name = req.body.name;
+  var password = req.body.password;
+  var repassword = req.body.repassword;
+  var gender = req.body.gender;
+  var bio = req.body.bio;
+
+   // 校验参数
+  try {
+    if (!(name.length >= 1 && name.length <= 10)) {
+      throw new Error('名字请限制在 1-10 个字符')
+    }
+    if (['m', 'f', 'x'].indexOf(gender) === -1) {
+      throw new Error('性别只能是 m、f 或 x')
+    }
+    if (!(bio.length >= 1 && bio.length <= 30)) {
+      throw new Error('个人简介请限制在 1-30 个字符')
+    }
+    if (password.length < 6) {
+      throw new Error('密码至少 6 个字符')
+    }
+    if (password !== repassword) {
+      throw new Error('两次输入密码不一致')
+    }
+  } catch (e) {
+    console.log(e.message);
+    res.json(false);
+    return;
+  }
+
+  password = sha1(password);
+  let user = {
+    username: name,
+    password: password,
+    gender: gender,
+    bio: bio
+  }
+
+  User.create(user, function (err, data) {
+    if (err) { 
+      console.log(err.message); 
+      res.json(false);
+      return;
+    }
+    res.json(data);
+  });
+
+});
+
+
+/* LOGIN */
+router.post('/login', function(req, res, next){
+  var username = req.body.name;
+  var password = req.body.password;
+  if(username == '' || username == null || username == undefined){
+    res.json(false);
+    return;
+  }
+  if(password == '' || password == null || password == undefined){
+    res.json(false);
+    return;
+  }
+
+  password = sha1(password);
+  let user = {
+    username: req.body.name,
+    password: password
+  }
+  User.findOne(user, function(err, result){
+    //when could not find a user, result will be null
+    console.log(result);
+    if(err) {
+      console.log(err.message);
+      res.json(false);
+      return;
+    }
+    res.json(result);
+  })
+
+})
 
 module.exports = router;

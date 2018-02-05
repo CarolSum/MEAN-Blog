@@ -1,0 +1,16 @@
+<div class="ui grid">
+  <div class="four wide column"></div>
+  <div class="eight wide column">
+    <form class="ui form segment" (ngSubmit)="login()">
+      <div class="field required">
+        <label for="name">用户名</label>
+        <input type="text" name="name" placeholder="用户名" [(ngModel)]="loginUser.name">
+      </div>
+      <div class="field required">
+        <label for="password">密码</label>
+        <input type="password" name="password" placeholder="密码" [(ngModel)]="loginUser.password">
+      </div>
+      <button type="submit" class="ui button fluid">登录</button>
+    </form>
+  </div>
+</div>

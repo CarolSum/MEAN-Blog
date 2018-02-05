@@ -19,7 +19,7 @@ interface PostsResponse{
 export class PostsComponent implements OnInit{
   posts: Post[];
   results: string[];
-  isLogin: boolean;
+  isLogin: string;
 
   constructor(
     private postService: PostService,
@@ -35,7 +35,7 @@ export class PostsComponent implements OnInit{
         post.text = post.text.substr(0, 50) + '...';
       })
     });
-    this.isLogin = this.authService.checkIfLogin();
+    this.isLogin = this.authService.get('isLogin');
   }
 
 /*
