@@ -14,6 +14,25 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
 
     <script src="systemjs.config.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        //点击按钮弹出下拉框
+        $('.ui.dropdown').dropdown();
+        
+        //鼠标悬浮在头像上，弹出气泡提示框
+        $('.post-content .avatar-link').popup({
+          inline:true,
+          position: 'bottom right',
+          lastResort: 'bottom right'
+        });
+      })
+    </script>
+
     <script>
       System.import('main.js').catch(function(err){ console.error(err); });
     </script>

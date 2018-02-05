@@ -20,4 +20,8 @@ export class AuthService {
     this.isLogin = true;
   }
 
+  getUser(){
+    return this.user;
+  }
+
 }

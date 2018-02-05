@@ -6,5 +6,5 @@
    - 
   <a [routerLink]="['/editPost', post._id]">Edit</a>
    - 
-  <a [routerLink]="['/deletePost', post._id]">Delete</a>
+  <a [routerLink]="['/deletePost', post._id]" *ngIf="isLogin">Delete</a>
 </div>

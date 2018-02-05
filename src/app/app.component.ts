@@ -5,6 +5,7 @@ import { Post } from './models/post';
 @Component({
   selector: 'my-app',
   template: `
+    <banner></banner>
     <h1>My blog</h1>
     <ul>
       <li><a routerLink="/">Home</a></li>
