@@ -4,7 +4,7 @@
   <div> {{post.text}} </div>
   <a [routerLink]="['/readPost', post._id]">More</a>
    - 
-  <a [routerLink]="['/editPost', post._id]" *ngIf="isLogin != false">Edit</a>
+  <a [routerLink]="['/editPost', post._id]" *ngIf="curUser != {} && post.userId == curUser._id">Edit</a>
    - 
-  <a [routerLink]="['/deletePost', post._id]" *ngIf="isLogin != false">Delete</a>
+  <a [routerLink]="['/deletePost', post._id]" *ngIf="curUser != {} && post.userId == curUser._id">Delete</a>
 </div>

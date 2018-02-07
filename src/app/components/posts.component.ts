@@ -20,6 +20,7 @@ export class PostsComponent implements OnInit{
   posts: Post[];
   results: string[];
   isLogin: string;
+  curUser: {};
 
   constructor(
     private postService: PostService,
@@ -36,6 +37,7 @@ export class PostsComponent implements OnInit{
       })
     });
     this.isLogin = this.authService.get('isLogin');
+    this.curUser = this.authService.getObject('user');
   }
 
 /*

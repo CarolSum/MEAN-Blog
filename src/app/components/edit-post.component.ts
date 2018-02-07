@@ -25,6 +25,7 @@ export class EditPostComponent {
     id: null,
     title: '',
     text: '',
+    userId: '',
   };
 
   constructor(
