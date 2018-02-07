@@ -25,3 +25,5 @@ use npm install && npm start to run the project.
  4. 文本编辑输入，（markdown组件）
  5. 评论增加引用功能
  6. 全局消息通知
+ 7. 用户详情页
+ 8. mongoose populate

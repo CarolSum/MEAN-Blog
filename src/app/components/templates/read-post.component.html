@@ -4,7 +4,7 @@
 <h3 class="ui minimal comments">留言</h3>
 <div *ngFor="let comment of comments">
   <div class="content">
-    <a routerLink="/">{{comment.userId}}</a>
+    <a [routerLink]="['/user', comment.userId]">{{comment.userId}}</a>
     <div class="metadata">
       <span class="date">{{comment.createdAt}}</span>
     </div>

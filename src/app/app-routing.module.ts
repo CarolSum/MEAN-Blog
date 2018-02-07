@@ -8,6 +8,7 @@ import { EditPostComponent } from './components/edit-post.component';
 import { DeletePostComponent } from './components/delete-post.component';
 import { SignInComponent } from './components/sign-in.component';
 import { SignUpComponent } from './components/sign-up.component';
+import { UserPageComponent } from './components/user-page.component';
 
 const routes: Routes = [
   { path: '',  component: PostsComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'deletePost/:id', component: DeletePostComponent },
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
+  { path: 'user/:id', component: UserPageComponent },
 ];
  
 @NgModule({

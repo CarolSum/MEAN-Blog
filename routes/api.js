@@ -18,6 +18,15 @@ router.get('/posts', function(req, res, next) {
   });
 });
 
+/* GET ALL Posts Of A User. */
+router.get('/posts/:userId', function(req, res, next) {
+  Post.find({userId: req.params.userId} ,function(err, posts){
+    if(err) return next(err);
+    console.log(posts);
+    res.json(posts);
+  });
+});
+
 /* GET SINGLE POST BY ID */
 router.get('/post/:id', function(req, res, next) {
   Post.findById(req.params.id, function (err, post) {
@@ -191,5 +200,8 @@ router.delete('/comments/:id', function(req, res, next) {
     res.json(data);
   });
 });
+
+
+
 
 module.exports = router;

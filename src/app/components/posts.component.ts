@@ -23,7 +23,6 @@ export class PostsComponent implements OnInit{
   curUser: {};
 
   constructor(
-    private postService: PostService,
     private authService: AuthService,
     private http: HttpClient
   ){}

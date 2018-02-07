@@ -13,6 +13,7 @@ import { DeletePostComponent } from './components/delete-post.component';
 import { BannerComponent } from './components/banner.component';
 import { SignInComponent } from './components/sign-in.component';
 import { SignUpComponent } from './components/sign-up.component';
+import { UserPageComponent } from './components/user-page.component';
 
 import { PostService } from './services/post.service';
 import { AuthService } from './services/auth.service';
@@ -36,6 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
     BannerComponent,
     SignInComponent,
     SignUpComponent,
+    UserPageComponent
   ],
   providers: [
     PostService,
