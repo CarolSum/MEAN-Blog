@@ -1,3 +1,23 @@
 <h3>{{post.title}}</h3>
 <div>{{post.text}}</div>
+
+<h3 class="ui minimal comments">留言</h3>
+<div *ngFor="let comment of comments">
+  <div class="content">
+    <a routerLink="/">{{comment.userId}}</a>
+    <div class="metadata">
+      <span class="date">{{comment.createdAt}}</span>
+    </div>
+    <div class="text">{{comment.content}}</div>
+    <div class="actions" *ngIf="curUser != {} && curUser._id == comment.userId ">
+      <button (click)="deleteComment()">删除</button>
+    </div>
+  </div>
+</div>
+
+<div class="field">
+  <textarea cols="50" rows="5" [(ngModel)]="form.content"></textarea>
+</div>
+<p><button (click)="addComment()">留言</button></p>
+
 <button (click)="goBack()">Back</button>

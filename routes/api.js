@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var sha1 = require('sha1')
+var sha1 = require('sha1');
+var moment = require('moment');
+
 
 var Post = require('../models/Post.js');
 var User = require('../models/User.js');
+var Comment = require('../models/Comment.js');
 
 /* GET ALL Posts. */
 router.get('/posts', function(req, res, next) {
@@ -47,6 +50,7 @@ router.delete('/post/:id', function(req, res, next) {
     res.json(post);
   });
 });
+
 
 /* CREATE A NEW USER*/
 router.post('/createUser', function(req, res, next){
@@ -129,6 +133,45 @@ router.post('/login', function(req, res, next){
     res.json(result);
   })
 
-})
+});
+
+
+/* ADD COMMENT */
+router.post('/comment', function(req, res, next){
+  console.log(req.body);
+  var postId = req.body.postId;
+  var userId = req.body.userId;
+  var content = req.body.content;
+  if (postId == '' || userId == '' || content == '') {
+    res.json(false);
+    return;
+  }
+ 
+  let cm = {
+    postId: postId,
+    content: content,
+    userId: userId,
+    createdAt: moment().format('YYYY-MM-DD HH:mm')
+  }
+
+  Comment.create(cm, function(err, data){
+    if (err) { 
+      console.log(err.message); 
+      res.json(false);
+      return;
+    }
+    res.json(data);
+  })
+
+});
+
+
+/* GET COMMENTS OF A POST */
+router.get('/comments/:postId', function(req, res, next) {
+  Comment.find({'postId': req.params.postId}, function (err, comments) {
+    if (err) return next(err);
+    res.json(comments);
+  });
+});
 
 module.exports = router;
