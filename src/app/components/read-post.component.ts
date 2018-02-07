@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 
+import { Comment } from '../models/comment';
 
 @Component({
   selector: 'read-post',
@@ -20,7 +21,7 @@ export class ReadPostComponent implements OnInit {
     userId: ''
   }
   curUser = {};
-  comments: any;
+  comments: Comment[];
 
   constructor(
     private authService: AuthService,
@@ -37,7 +38,7 @@ export class ReadPostComponent implements OnInit {
     if(this.curUser != {} ){
       this.form.userId = this.authService.getObject('user')._id;
     }
-    this.http.get('/api/comments/'+this.form.postId)
+    this.http.get<Comment[]>('/api/comments/'+this.form.postId)
       .subscribe(data => {
         console.log(data);
         this.comments = data;
@@ -56,10 +57,11 @@ export class ReadPostComponent implements OnInit {
   }
 
   addComment(): void{
-    this.http.post('/api/comment', this.form).subscribe(res => {
+    this.http.post<Comment>('/api/comment', this.form).subscribe(res => {
       console.log(res);
+      this.comments.push(res);
+      this.form.content = '';
     });
-    this.location.back();
   }
 
   deleteComment(): void{

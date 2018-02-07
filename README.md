@@ -6,6 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 use npm install && npm start to run the project.
 
+## 功能
+
+添加用户评论功能，尚未对评论表单进行验证
+
+
 ## ToDo
 
  1. 登录之后进行了一次页面刷新，登出时也是。
