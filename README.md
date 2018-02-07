@@ -6,6 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 use npm install && npm start to run the project.
 
+如果不想重新build，可以直接运行node ./bin/www
+执行npm start的话angular cli会重新编译打包文件到dist目录。
+
 ## 功能
 
 ###发表博客
@@ -27,3 +30,4 @@ use npm install && npm start to run the project.
  6. 评论增加引用功能
  7. 全局消息通知
  8. 评论框未登录是否可用
+ 9. 完善express路由

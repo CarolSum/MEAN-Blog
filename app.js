@@ -10,6 +10,7 @@ mongoose.connect('mongodb://localhost/blog-test', { promiseLibrary: require('blu
     .catch((err) => console.error(err));
 
 var api = require('./routes/api');
+// var index = require('./routes/index');
 
 var app = express();
 
@@ -18,10 +19,18 @@ var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'true'}));
-app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/posts', express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+//app.use('/posts', express.static(path.join(__dirname, 'dist')));
 app.use('/api', api);
-app.set('view engine', 'jade');
+
+//index这个路由控制所有其他链接，以及相关链接的访问
+//app.use('/', index);
+
+//view engine 改为html
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
