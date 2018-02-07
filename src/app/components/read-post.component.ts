@@ -59,7 +59,11 @@ export class ReadPostComponent implements OnInit {
   addComment(): void{
     this.http.post<Comment>('/api/comment', this.form).subscribe(res => {
       console.log(res);
-      this.comments.push(res);
+      this.http.get<Comment[]>('/api/comments/'+this.form.postId)
+      .subscribe(data => {
+        console.log(data);
+        this.comments = data;
+      })
       this.form.content = '';
     });
   }

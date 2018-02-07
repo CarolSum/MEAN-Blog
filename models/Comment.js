@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var ObjectId = mongoose.Schema.ObjectId;
+var Schema = mongoose.Schema;
+var User = require('./User.js');
 
 var CommentSchema = new mongoose.Schema({
   postId: {
@@ -7,7 +8,7 @@ var CommentSchema = new mongoose.Schema({
     index: true,  
   },
   content: String,
-  userId: String,
+  userId: { type: Schema.Types.ObjectId, ref: 'User'},
   createdAt: String
 });
 

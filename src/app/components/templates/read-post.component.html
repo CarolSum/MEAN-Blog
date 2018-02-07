@@ -4,12 +4,12 @@
 <h3 class="ui minimal comments">留言</h3>
 <div *ngFor="let comment of comments">
   <div class="content">
-    <a [routerLink]="['/user', comment.userId]">{{comment.userId}}</a>
+    <a [routerLink]="['/user', comment.userId._id]">{{comment.userId.username}}</a>
     <div class="metadata">
       <span class="date">{{comment.createdAt}}</span>
     </div>
     <div class="text">{{comment.content}}</div>
-    <div class="actions" *ngIf="curUser != {} && curUser._id == comment.userId ">
+    <div class="actions" *ngIf="curUser != {} && curUser._id == comment.userId._id ">
       <button (click)="deleteComment(comment._id)">删除</button>
     </div>
   </div>

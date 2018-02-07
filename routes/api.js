@@ -176,11 +176,13 @@ router.post('/comment', function(req, res, next){
 
 
 /* GET COMMENTS OF A POST */
-router.get('/comments/:postId', function(req, res, next) {
-  Comment.find({'postId': req.params.postId}, function (err, comments) {
-    if (err) return next(err);
-    res.json(comments);
-  });
+router.get('/comments/:postId', function(req, res, next){
+  Comment.find({'postId': req.params.postId})
+    .populate('userId')
+    .exec(function(err, comments){
+      if (err) return next(err);
+      res.json(comments);
+    })
 });
 
 
