@@ -174,4 +174,22 @@ router.get('/comments/:postId', function(req, res, next) {
   });
 });
 
+
+/* DELETE A COMMENT */
+router.delete('/comment/:id', function(req, res, next) {
+  Comment.findByIdAndRemove(req.params.id, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+
+/* DELETE ALL COMMENTS OF A POST */
+router.delete('/comments/:id', function(req, res, next) {
+  Comment.remove({ postId: req.params.id}, function (err, data) {
+    if (err) return next(err);
+    res.json(data);
+  });
+});
+
 module.exports = router;

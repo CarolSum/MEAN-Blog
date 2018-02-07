@@ -42,6 +42,7 @@ export class DeletePostComponent implements OnInit {
 
   deletePost(): void{
     this.http.delete('/api/post/'+this.route.snapshot.params['id']).subscribe();
+    this.http.delete('/api/comments/'+this.route.snapshot.params['id']).subscribe();
     this.location.back();
   }
 }

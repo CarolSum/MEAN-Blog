@@ -64,8 +64,13 @@ export class ReadPostComponent implements OnInit {
     });
   }
 
-  deleteComment(): void{
-
+  deleteComment(commentId: string): void{
+    this.http.delete('/api/comment/'+commentId).subscribe();
+    this.http.get<Comment[]>('/api/comments/'+this.form.postId)
+      .subscribe(data => {
+        console.log(data);
+        this.comments = data;
+      })
   }
 
 

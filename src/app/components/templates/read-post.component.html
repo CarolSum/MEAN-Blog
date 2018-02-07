@@ -10,14 +10,16 @@
     </div>
     <div class="text">{{comment.content}}</div>
     <div class="actions" *ngIf="curUser != {} && curUser._id == comment.userId ">
-      <button (click)="deleteComment()">删除</button>
+      <button (click)="deleteComment(comment._id)">删除</button>
     </div>
   </div>
 </div>
 
-<div class="field">
-  <textarea cols="50" rows="5" [(ngModel)]="form.content"></textarea>
+<div *ngIf="curUser != {}">
+  <div class="field">
+    <textarea cols="50" rows="5" [(ngModel)]="form.content"></textarea>
+  </div>
+  <p><button (click)="addComment()">留言</button></p>
 </div>
-<p><button (click)="addComment()">留言</button></p>
 
 <button (click)="goBack()">Back</button>
