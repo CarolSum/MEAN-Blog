@@ -6,6 +6,7 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'banner',
   templateUrl: './templates/banner.component.html', 
+  styleUrls: ['./css/banner.component.css'],
 })
 
 export class BannerComponent implements OnInit {

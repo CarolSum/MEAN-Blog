@@ -1,26 +1,30 @@
-<div class="nav">
-  <div class="ui grid">
-    <div class="four wide column"></div>
-    <div class="eight wide column">
-      <a routerLink="/"><h1>My Blog</h1></a>
-      <p>my simple blog</p>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/">My blog</a>
     </div>
-  </div>
-</div>
-<div class="nav-setting">
-  <div class="ui buttons">
-      <div class="ui floating dropdown button">
-        <i class="icon bars"></i>
-        <div class="menu" *ngIf="isLogin != false ">
-           <a class="item" [routerLink]="['/user', user._id]">欢迎, {{user.username}}</a>
-           <div class="divider"></div>
-           <a class="item" routerLink="/addPost">发表文章</a>
-           <span class="item" (click)="SignOut()">登出</span> 
-        </div>
-        <div class="menu" *ngIf="isLogin == false ">
-           <a class="item" routerLink="/signin">登录</a>
-           <a class="item" routerLink="/signup">注册</a> 
-        </div>
+
+    <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
       </div>
+      <button type="submit" class="btn btn-default">搜索</button>
+    </form>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu" *ngIf="isLogin != false ">
+          <li><a class="blog-nav-item" [routerLink]="['/user', user._id]">欢迎, {{user.username}}</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a class="blog-nav-item" routerLink="/addPost">发表文章</a></li>
+          <li><a class="blog-nav-item" (click)="SignOut()">登出</a></li>
+        </ul>
+        <ul class="dropdown-menu" *ngIf="isLogin == false ">
+          <li><a class="blog-nav-item" routerLink="/signin">登录</a></li>
+          <li><a class="blog-nav-item" routerLink="/signup">注册</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
-</div>
+</nav>
