@@ -14,6 +14,7 @@ interface PostsResponse{
 @Component({
   selector: 'all-posts',
   templateUrl: './templates/posts.component.html', 
+  styleUrls: ['./css/posts.component.css'],
 })
 
 export class PostsComponent implements OnInit{
