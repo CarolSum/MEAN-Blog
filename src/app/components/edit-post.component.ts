@@ -23,10 +23,10 @@ export class EditPostComponent {
     text: '',
   };
   post:Post = {
-    id: null,
     title: '',
     text: '',
     userId: '',
+    createdAt: ''
   };
 
   constructor(

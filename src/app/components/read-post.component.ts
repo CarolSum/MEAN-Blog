@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 import { Comment } from '../models/comment';
+import { Post } from '../models/post';
 
 @Component({
   selector: 'read-post',
@@ -15,7 +16,7 @@ import { Comment } from '../models/comment';
 })
 
 export class ReadPostComponent implements OnInit {
-  post = {};
+  post: Post;
   form = {
     postId: '',
     content: '',
@@ -47,7 +48,7 @@ export class ReadPostComponent implements OnInit {
   }
 
   getPostDetail(id){
-    this.http.get('/api/post/'+id).subscribe(data => {
+    this.http.get<Post>('/api/post/'+id).subscribe(data => {
       this.post = data;
       console.log(data);
     });

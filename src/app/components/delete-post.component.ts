@@ -17,10 +17,10 @@ import { Post } from '../models/post';
 
 export class DeletePostComponent implements OnInit {
   post: Post = {
-    id: null,
     title: '',
     text: '',
     userId: '',
+    createdAt: ''
   };
   
   constructor(

@@ -6,23 +6,24 @@ import { Post } from '../models/post';
 export class PostService {
   posts: Post[] = [
     {
-      id: 1,
       title: "Lorem ipsum",
       text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       userId: "asd",
+      createdAt: '2018/2/25'
     },
     {
-      id: 2,
       title: "Sed egestas",
       text: "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus.",
       userId: "sad",
+      createdAt: '2018/2/25'
     }
   ];
 
   getPosts(): Promise<Post[]> {
     return Promise.resolve(this.posts);
   }
-
+  
+  /*
   getPost(id: number): Promise<Post>{
     return this.getPosts().then(posts => posts.find(post => post.id === id));
   }
@@ -41,4 +42,6 @@ export class PostService {
     post.id = this.posts.length + 1;
     this.posts.push(post);
   }
+
+  */
 }

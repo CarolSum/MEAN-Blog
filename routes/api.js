@@ -45,16 +45,24 @@ router.get('/posts/:userId/:pageNum', function(req, res, next) {
 
 /* GET SINGLE POST BY ID */
 router.get('/post/:id', function(req, res, next) {
-  Post.findById(req.params.id, function (err, post) {
-    if (err) return next(err);
-    res.json(post);
-  });
+  Post.findById(req.params.id)
+    .populate('userId')
+    .exec(function (err, post) {
+      if (err) return next(err);
+      res.json(post);
+    });
 });
 
 /* SAVE POST */
 router.post('/post', function(req, res, next) {
   console.log(req.body);
-  Post.create(req.body, function (err, post) {
+  let newPost = {
+    title: req.body.title,
+    text: req.body.text,
+    userId: req.body.userId,
+    createdAt: moment().format('YYYY-MM-DD HH:mm')
+  }
+  Post.create(newPost, function (err, post) {
     if (err) { console.log(err); return next(err); }
     res.json(post);
   });

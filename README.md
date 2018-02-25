@@ -25,8 +25,12 @@ use npm install && npm start to run the project.
  1. 登录之后进行了一次页面刷新，登出时也是。
  2. 权限机制： 添加管理员权限
     分页机制    √ (最左最右两端的按钮未完成)
- 3. mongoose populate 
-    post详情页获取该博客发布的时间与作者,作者的简介----即填充作者的相关信息
+ 3. mongoose populate   √
+
+    post详情页获取该博客发布的时间与作者,作者的简介----即填充作者的相关信息    √
+
+    填充的安全性问题？
+
  4. 页面UI美化  √
  5. 文本编辑输入，（markdown组件）
  6. 评论增加引用功能
@@ -34,6 +38,7 @@ use npm install && npm start to run the project.
  8. 评论框未登录是否可用
  9. 完善express路由     ————目前将其他路径重定向至根目录
  10. 评论数、阅读量
+ 11. 页面搜索功能
 
 ## bug
 用户详情页之间无法直接跳转，疑似angular不会销毁再重建同一个组件，导致组件数据更新不了 ____ √ 已解决：subscribe消息订阅模型

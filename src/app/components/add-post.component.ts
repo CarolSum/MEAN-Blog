@@ -15,10 +15,10 @@ import { Post } from '../models/post';
 
 export class AddPostComponent {
   form:Post = {
-    id: null,
     title: '',
     text: '',
     userId: '',
+    createdAt: ''
   };
 
   constructor(
