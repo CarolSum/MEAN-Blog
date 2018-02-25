@@ -1,6 +1,21 @@
-<h2>{{post.title}}</h2>
+<!-- <h2>{{post.title}}</h2>
 <div>{{post.text}}</div>
 <p>Are you sure you want to delete this post? 
     <button (click)="deletePost()">Yes</button>
     <button (click)="home()">No thanks</button>
-</p>
+</p> -->
+
+<div class="container">
+  <div class="confirm-content">
+    <div class="confirm-header">
+      <h4 class="confirm-title">{{post.title}}</h4>
+    </div>
+    <div class="confirm-body">
+      Are you sure you want to delete this post? 
+    </div>
+    <div class="confirm-footer">
+      <button class="btn btn-default" (click)="home()">No, thanks</button>
+      <button class="btn btn-danger" (click)="deletePost()">Yes</button>
+    </div>
+  </div>
+</div> 

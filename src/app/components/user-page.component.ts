@@ -10,6 +10,7 @@ import { Post } from '../models/post';
 @Component({
   selector: 'user-page',
   templateUrl: './templates/user-page.component.html', 
+  styleUrls: ['./css/userpage.component.css'],
 })
 
 export class UserPageComponent implements OnInit{

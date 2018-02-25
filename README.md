@@ -24,6 +24,7 @@ use npm install && npm start to run the project.
 
  1. 登录之后进行了一次页面刷新，登出时也是。
  2. 权限机制： 添加管理员权限
+    分页机制
  3. mongoose populate 
     post详情页获取该博客发布的时间与作者,作者的简介----即填充作者的相关信息
  4. 页面UI美化
@@ -32,6 +33,7 @@ use npm install && npm start to run the project.
  7. 全局消息通知
  8. 评论框未登录是否可用
  9. 完善express路由
+ 10. 评论数、阅读量
 
 ## bug
 用户详情页之间无法直接跳转，疑似angular不会销毁再重建同一个组件，导致组件数据更新不了 ____ √ 已解决：subscribe消息订阅模型

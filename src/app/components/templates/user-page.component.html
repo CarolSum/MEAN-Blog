@@ -13,20 +13,20 @@
 <div class="container">
   <h2>{{target.username}}的个人主页</h2>
   <p>原创{{posts.length}}篇</p>
-  <div *ngFor="let post of posts">
+  <div *ngFor="let post of posts" class="post-item">
     <div class="row">
-      <div class="col-md-7 col-md-push-5">
+      <div class="col-md-10 col-md-push-2 descript">
         <h2 class="post-heading">{{post.title}}</h2>
         <p class="lead">{{post.text}}</p>
-        <p><a class="btn btn-lg btn-primary" [routerLink]="['/readPost', post._id]" role="button">More</a></p>
-        <p *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-lg btn-primary" [routerLink]="['/editPost', post._id]" role="button">Edit</a></p>
-        <p *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-lg btn-primary" [routerLink]="['/deletePost', post._id]" role="button">Delete</a></p>
+        <span><a class="btn btn-primary" [routerLink]="['/readPost', post._id]" role="button">详情</a></span>
+        <span *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-default" [routerLink]="['/editPost', post._id]" role="button">修改</a></span>
+        <span *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-danger" [routerLink]="['/deletePost', post._id]" role="button">删除</a></span>
       </div>
-      <div class="col-md-5 col-md-pull-7">
-        <img class="img-responsive center-block" src="images/1.jpg" alt="Generic placeholder image">
+      <div class="col-md-2 col-md-pull-10">
+        <img class="img-responsive center-block" src="images/1.jpg" alt="Post Cover">
       </div>
     </div>
-    <hr class="post-divider">
+    <hr>
   </div>
   <button (click)="goBack()" class="btn btn-default">Back</button>
 </div>

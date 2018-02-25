@@ -10,6 +10,7 @@ import { Post } from '../models/post';
 @Component({
   selector: 'delete-post',
   templateUrl: './templates/delete-post.component.html', 
+  styleUrls: ['./css/delete-post.component.css'],
 })
 
 

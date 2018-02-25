@@ -4,9 +4,7 @@
       <div class="col-md-7 col-md-push-5">
         <h2 class="post-heading">{{post.title}}</h2>
         <p class="lead">{{post.text}}</p>
-        <p><a class="btn btn-lg btn-primary" [routerLink]="['/readPost', post._id]" role="button">More</a></p>
-        <p *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-lg btn-primary" [routerLink]="['/editPost', post._id]" role="button">Edit</a></p>
-        <p *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-lg btn-primary" [routerLink]="['/deletePost', post._id]" role="button">Delete</a></p>
+        <p><a class="btn btn-lg btn-primary" [routerLink]="['/readPost', post._id]" role="button">详情</a></p>
       </div>
       <div class="col-md-5 col-md-pull-7">
         <img class="img-responsive center-block" src="images/1.jpg" alt="Generic placeholder image">
