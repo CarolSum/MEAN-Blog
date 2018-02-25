@@ -1,4 +1,4 @@
-<p>Totally {{posts.length}} posts!</p>
+<!-- <p>Totally {{posts.length}} posts!</p>
 <div *ngFor="let post of posts">
   <h3> {{post.title}} </h3>
   <div> {{post.text}} </div>
@@ -8,4 +8,25 @@
    - 
   <a [routerLink]="['/deletePost', post._id]" *ngIf="curUser != {} && post.userId == curUser._id">Delete</a>
 </div>
-<button (click)="goBack()">Back</button>
+<button (click)="goBack()">Back</button> -->
+
+<div class="container">
+  <h2>{{target.username}}的个人主页</h2>
+  <p>原创{{posts.length}}篇</p>
+  <div *ngFor="let post of posts">
+    <div class="row">
+      <div class="col-md-7 col-md-push-5">
+        <h2 class="post-heading">{{post.title}}</h2>
+        <p class="lead">{{post.text}}</p>
+        <p><a class="btn btn-lg btn-primary" [routerLink]="['/readPost', post._id]" role="button">More</a></p>
+        <p *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-lg btn-primary" [routerLink]="['/editPost', post._id]" role="button">Edit</a></p>
+        <p *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-lg btn-primary" [routerLink]="['/deletePost', post._id]" role="button">Delete</a></p>
+      </div>
+      <div class="col-md-5 col-md-pull-7">
+        <img class="img-responsive center-block" src="images/1.jpg" alt="Generic placeholder image">
+      </div>
+    </div>
+    <hr class="post-divider">
+  </div>
+  <button (click)="goBack()" class="btn btn-default">Back</button>
+</div>

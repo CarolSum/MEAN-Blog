@@ -203,7 +203,12 @@ router.delete('/comments/:id', function(req, res, next) {
   });
 });
 
-
-
+/* GET A Target User */
+router.get('/targetUser/:id', function(req, res, next) {
+  User.findById(req.params.id, function (err, user) {
+    if (err) return next(err);
+    res.json(user);
+  });
+});
 
 module.exports = router;

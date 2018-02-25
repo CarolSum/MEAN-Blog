@@ -15,6 +15,7 @@ import { Post } from '../models/post';
 export class UserPageComponent implements OnInit{
   posts: Post[];
   curUser = {};
+  target = {};
 
   constructor(
     private authService: AuthService,
@@ -24,7 +25,10 @@ export class UserPageComponent implements OnInit{
   ){}
 
   ngOnInit(): void{
-    this.getPostsByUserId(this.route.snapshot.params['id']);
+    this.route.params.subscribe(params => {
+      this.getPostsByUserId(params['id']);
+    })
+    
   }
 
   getPostsByUserId(id){
@@ -37,6 +41,11 @@ export class UserPageComponent implements OnInit{
         })
       });
     this.curUser = this.authService.getObject('user');
+    this.http.get('/api/targetUser/'+id)
+      .subscribe(data => {
+        console.log(data);
+        this.target = data;
+      })
   }
 
   goBack(){

@@ -32,3 +32,6 @@ use npm install && npm start to run the project.
  7. 全局消息通知
  8. 评论框未登录是否可用
  9. 完善express路由
+
+## bug
+用户详情页之间无法直接跳转，疑似angular不会销毁再重建同一个组件，导致组件数据更新不了 ____ √ 已解决：subscribe消息订阅模型
