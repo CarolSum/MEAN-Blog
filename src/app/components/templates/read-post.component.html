@@ -83,11 +83,11 @@
   <div class="row">
     <div class="col-sm-8 comment-area">
       <h2>留言</h2>
-      <div class="comment-item" *ngFor="let comment of comments">
+      <div class="comment-item" *ngFor="let comment of comments; index as i">
         <div class="comment-head">
-          <a [routerLink]="['/user', comment.userId._id]">{{comment.userId.username}}</a>
+          <a [routerLink]="['/user', comment.userId._id, 1]">{{comment.userId.username}}</a>
           <span class="comment-meta">{{comment.createdAt}}</span>
-          <span class="floor comment-meta">1楼</span>
+          <span class="floor comment-meta">{{i+1}}楼</span>
           <span class="floor"  *ngIf="curUser != {} && curUser._id == comment.userId._id "><button class="btn btn-default del-comm-btn" (click)="deleteComment(comment._id)">删除</button></span>
         </div>
         <p class="comment-body">{{comment.content}}</p>

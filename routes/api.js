@@ -18,13 +18,29 @@ router.get('/posts', function(req, res, next) {
   });
 });
 
-/* GET ALL Posts Of A User. */
+/* GET Posts Number Of A User. */
 router.get('/posts/:userId', function(req, res, next) {
-  Post.find({userId: req.params.userId} ,function(err, posts){
+  Post.find({userId: req.params.userId}, function(err, posts){
     if(err) return next(err);
     console.log(posts);
-    res.json(posts);
+    res.json({
+      length: posts.length
+    });
   });
+});
+
+
+/* GET ALL Posts Of A User. */
+router.get('/posts/:userId/:pageNum', function(req, res, next) {
+  var pageSize = 2;
+  Post.find({userId: req.params.userId})
+    .skip(2 * (parseInt(req.params.pageNum) - 1))
+    .limit(2)
+    .exec(function(err, posts){
+      if(err) return next(err);
+      console.log(posts);
+      res.json(posts);
+    });
 });
 
 /* GET SINGLE POST BY ID */

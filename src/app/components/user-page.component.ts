@@ -7,6 +7,11 @@ import { AuthService } from '../services/auth.service';
 
 import { Post } from '../models/post';
 
+
+interface LengthResp {
+  length: number;
+}
+
 @Component({
   selector: 'user-page',
   templateUrl: './templates/user-page.component.html', 
@@ -17,6 +22,10 @@ export class UserPageComponent implements OnInit{
   posts: Post[];
   curUser = {};
   target = {};
+  totalNum = {
+    length: 0
+  };
+  pageNumList = [];
 
   constructor(
     private authService: AuthService,
@@ -27,13 +36,13 @@ export class UserPageComponent implements OnInit{
 
   ngOnInit(): void{
     this.route.params.subscribe(params => {
-      this.getPostsByUserId(params['id']);
+      this.getPostsByUserId(params['id'], params['page']);
     })
     
   }
 
-  getPostsByUserId(id){
-    this.http.get<Post[]>('/api/posts/'+id)
+  getPostsByUserId(id, page){
+    this.http.get<Post[]>('/api/posts/'+id+'/'+page)
       .subscribe(data => {
         console.log(data);
         this.posts = data;
@@ -46,7 +55,16 @@ export class UserPageComponent implements OnInit{
       .subscribe(data => {
         console.log(data);
         this.target = data;
-      })
+      });
+
+    this.pageNumList.length = 0;
+    this.http.get<LengthResp>('/api/posts/'+id)
+      .subscribe(data => {
+        this.totalNum = data;
+        for(var i = 0; i < this.totalNum.length / 2; i++){
+          this.pageNumList.push(i+1);
+        }
+      });
   }
 
   goBack(){

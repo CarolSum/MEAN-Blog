@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'deletePost/:id', component: DeletePostComponent },
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'user/:id', component: UserPageComponent },
+  { path: 'user/:id/:page', component: UserPageComponent },
 ];
  
 @NgModule({
