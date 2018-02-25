@@ -26,6 +26,7 @@ export class UserPageComponent implements OnInit{
     length: 0
   };
   pageNumList = [];
+  curPage = 0;
 
   constructor(
     private authService: AuthService,
@@ -42,6 +43,7 @@ export class UserPageComponent implements OnInit{
   }
 
   getPostsByUserId(id, page){
+    this.curPage = page;
     this.http.get<Post[]>('/api/posts/'+id+'/'+page)
       .subscribe(data => {
         console.log(data);

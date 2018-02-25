@@ -31,22 +31,22 @@
   <button (click)="goBack()" class="btn btn-default">Back</button>
 
   <!--分页-->
-  <nav aria-label="Page navigation">
+  <nav aria-label="Page navigation" style="text-align: center;">
     <ul class="pagination">
-      <li>
-        <a href="#" aria-label="Previous">
+      <li class="disabled">
+        <span>
           <span aria-hidden="true">&laquo;</span>
-        </a>
+        </span>
       </li>
       
-      <li *ngFor="let i of pageNumList">
+      <li *ngFor="let i of pageNumList" [class.active]="curPage == i">
         <a [routerLink]="['/user', target._id, i]">{{i}}</a>
       </li>
 
-      <li>
-        <a href="#" aria-label="Next">
+      <li class="disabled">
+        <span>
           <span aria-hidden="true">&raquo;</span>
-        </a>
+        </span>
       </li>
     </ul>
   </nav>

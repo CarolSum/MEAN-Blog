@@ -31,6 +31,11 @@ app.use('/api', api);
 //view engine 改为html
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
+
+app.get('*', function(req,res,next){
+  res.redirect('/');
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -48,5 +53,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
