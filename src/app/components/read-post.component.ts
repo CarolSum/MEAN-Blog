@@ -11,6 +11,7 @@ import { Comment } from '../models/comment';
 @Component({
   selector: 'read-post',
   templateUrl: './templates/read-post.component.html', 
+  styleUrls: ['./css/read-post.component.css'],
 })
 
 export class ReadPostComponent implements OnInit {

@@ -24,7 +24,8 @@ use npm install && npm start to run the project.
 
  1. 登录之后进行了一次页面刷新，登出时也是。
  2. 权限机制： 添加管理员权限
- 3. mongoose populate √
+ 3. mongoose populate 
+    post详情页获取该博客发布的时间与作者,作者的简介----即填充作者的相关信息
  4. 页面UI美化
  5. 文本编辑输入，（markdown组件）
  6. 评论增加引用功能

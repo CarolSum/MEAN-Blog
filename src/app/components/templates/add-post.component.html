@@ -1,6 +1,33 @@
-<h2>Write a new post</h2>
+<!-- <h2>Write a new post</h2>
 <label for="title">Title: </label>
 <input placeholder="title" name="title" [(ngModel)]="form.title">
 <p>Body:</p>
 <textarea cols="50" rows="15" [(ngModel)]="form.text"></textarea>
-<p><button (click)="submitPost()">Submit Post</button></p>
+<p><button (click)="submitPost()">Submit Post</button></p> -->
+
+
+<div class="container">
+  <form class="form-add form-horizontal">
+  <h2 class="form-add-heading col-sm-offset-2">发表新博客</h2>
+  <div class="form-group">
+    <label for="title" class="col-sm-2 control-label">标题</label>
+    <div class="col-sm-10">
+      <input type="text" name="title" class="form-control" placeholder="title" required autofocus [(ngModel)]="form.title">
+    </div>
+    
+  </div>
+  <div class="form-group">
+    <label for="content" class="col-sm-2 control-label">内容</label>
+    <div class="col-sm-10">
+      <textarea  name="content" class="form-control" placeholder="博客内容" required rows="21" [(ngModel)]="form.text"></textarea> 
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button (click)="submitPost()" class="btn btn-primary btn-block btn-lg">发表</button>
+    </div>
+  </div>
+  </form>
+
+</div> 

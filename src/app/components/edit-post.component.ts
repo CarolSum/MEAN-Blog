@@ -12,6 +12,7 @@ import { Post } from '../models/post';
 @Component({
   selector: 'edit-post',
   templateUrl: './templates/edit-post.component.html', 
+  styleUrls: ['./css/edit-post.component.css'],
 })
 
 

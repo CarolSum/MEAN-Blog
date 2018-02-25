@@ -1,4 +1,4 @@
-<h3>{{post.title}}</h3>
+<!-- <h3>{{post.title}}</h3>
 <div>{{post.text}}</div>
 
 <h3 class="ui minimal comments">留言</h3>
@@ -23,3 +23,80 @@
 </div>
 
 <button (click)="goBack()">Back</button>
+ -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 blog-main">
+      <div class="blog-post">
+        <h2 class="blog-post-title">{{post.title}}</h2>
+        <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+        <hr>
+        <p>{{post.text}}</p>
+      </div><!-- /.blog-post -->
+
+      <nav>
+        <ul class="pager">
+          <li><button class="btn btn-default" (click)="goBack()">Back</button></li>
+        </ul>
+      </nav>
+
+    </div><!-- /.blog-main -->
+
+    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+      <div class="sidebar-module sidebar-module-inset">
+        <h4>About</h4>
+        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+      </div>
+      <div class="sidebar-module">
+        <h4>Archives</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">March 2014</a></li>
+          <li><a href="#">February 2014</a></li>
+          <li><a href="#">January 2014</a></li>
+          <li><a href="#">December 2013</a></li>
+          <li><a href="#">November 2013</a></li>
+          <li><a href="#">October 2013</a></li>
+          <li><a href="#">September 2013</a></li>
+          <li><a href="#">August 2013</a></li>
+          <li><a href="#">July 2013</a></li>
+          <li><a href="#">June 2013</a></li>
+          <li><a href="#">May 2013</a></li>
+          <li><a href="#">April 2013</a></li>
+        </ol>
+      </div>
+      <div class="sidebar-module">
+        <h4>Elsewhere</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ol>
+      </div>
+    </div><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+
+</div><!-- /.container -->
+
+<div class="container blog-comment">
+  <div class="row">
+    <div class="col-sm-8 comment-area">
+      <h2>留言</h2>
+      <div class="comment-item" *ngFor="let comment of comments">
+        <div class="comment-head">
+          <a [routerLink]="['/user', comment.userId._id]">{{comment.userId.username}}</a>
+          <span class="comment-meta">{{comment.createdAt}}</span>
+          <span class="floor comment-meta">1楼</span>
+          <span class="floor"  *ngIf="curUser != {} && curUser._id == comment.userId._id "><button class="btn btn-default del-comm-btn" (click)="deleteComment(comment._id)">删除</button></span>
+        </div>
+        <p class="comment-body">{{comment.content}}</p>
+      </div>
+
+      <div class="comment-item" *ngIf="curUser != {}">
+        <textarea class="form-control" placeholder="发表你的评论" rows="3" [(ngModel)]="form.content"></textarea>
+        <div class="btn-bar clearfix"><button class="btn btn-redBorder" (click)="addComment()">发表评论</button></div>
+      </div>
+    </div>
+  </div>
+</div>

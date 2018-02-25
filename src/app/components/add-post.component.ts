@@ -8,6 +8,7 @@ import { Post } from '../models/post';
 @Component({
   selector: 'add-post',
   templateUrl: './templates/add-post.component.html', 
+  styleUrls: ['./css/add-post.component.css'],
 })
 
 
