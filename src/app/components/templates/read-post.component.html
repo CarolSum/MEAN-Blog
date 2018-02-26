@@ -32,7 +32,8 @@
         <h2 class="blog-post-title">{{post.title}}</h2>
         <p class="blog-post-meta">{{post.createdAt}} by <a  [routerLink]="['/user', post.userId._id, 1]">{{post.userId.username}}</a></p>
         <hr>
-        <markdown>{{post.text}}</markdown>
+        <markdown *ngIf="!post.isShielded">{{post.text}}</markdown>
+        <markdown *ngIf="post.isShielded">该内容已被管理员隐藏</markdown>
       </div><!-- /.blog-post -->
 
       <nav>

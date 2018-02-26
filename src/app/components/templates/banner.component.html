@@ -18,6 +18,8 @@
         <ul class="dropdown-menu" *ngIf="isLogin != false ">
           <li><a class="blog-nav-item" [routerLink]="['/user', user._id, '1']">欢迎, {{user.username}}</a></li>
           <li role="separator" class="divider"></li>
+          <li><a class="blog-nav-item" routerLink="/post-manage" *ngIf="user.gender === 'adm'">管理博客</a></li>
+          <li><a class="blog-nav-item" routerLink="/comment-manage" *ngIf="user.gender === 'adm'">管理评论</a></li>
           <li><a class="blog-nav-item" routerLink="/addPost">发表文章</a></li>
           <li><a class="blog-nav-item" (click)="SignOut()">登出</a></li>
         </ul>

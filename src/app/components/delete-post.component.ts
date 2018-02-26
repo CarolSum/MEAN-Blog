@@ -20,7 +20,8 @@ export class DeletePostComponent implements OnInit {
     title: '',
     text: '',
     userId: '',
-    createdAt: ''
+    createdAt: '',
+    isShielded: false
   };
   
   constructor(

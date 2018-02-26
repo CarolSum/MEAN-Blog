@@ -18,7 +18,8 @@ export class AddPostComponent {
     title: '',
     text: '',
     userId: '',
-    createdAt: ''
+    createdAt: '',
+    isShielded: false
   };
 
   constructor(

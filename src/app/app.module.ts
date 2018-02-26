@@ -16,6 +16,8 @@ import { SignInComponent } from './components/sign-in.component';
 import { SignUpComponent } from './components/sign-up.component';
 import { UserPageComponent } from './components/user-page.component';
 import { SearchResultComponent } from './components/search-result.component';
+import { PostManageComponent } from './components/post-manage.component';
+import { CommentManageComponent } from './components/comment-manage.component';
 
 import { PostService } from './services/post.service';
 import { AuthService } from './services/auth.service';
@@ -43,7 +45,9 @@ import { AppRoutingModule } from './app-routing.module';
     SignInComponent,
     SignUpComponent,
     UserPageComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    PostManageComponent,
+    CommentManageComponent
   ],
   providers: [
     PostService,

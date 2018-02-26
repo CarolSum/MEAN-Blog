@@ -17,8 +17,9 @@
     <div class="row">
       <div class="col-md-10 col-md-push-2 describe">
         <h2 class="post-heading">{{post.title}}</h2>
-        <p class="lead">{{post.text}}</p>
-        <span><a class="btn btn-primary" [routerLink]="['/readPost', post._id]" role="button">详情</a></span>
+        <p class="lead" *ngIf="!post.isShielded">{{post.text}}</p>
+        <p class="lead" *ngIf="post.isShielded">该内容已被管理员隐藏</p>
+        <span><button class="btn btn-primary" (click)="gotoDetail(post)">详情</button></span>
         <span *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-default" [routerLink]="['/editPost', post._id]" role="button">修改</a></span>
         <span *ngIf="curUser != {} && post.userId == curUser._id"><a class="btn btn-danger" [routerLink]="['/deletePost', post._id]" role="button">删除</a></span>
       </div>

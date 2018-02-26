@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location }  from '@angular/common';
 
 import { AuthService } from '../services/auth.service';
@@ -32,7 +32,8 @@ export class UserPageComponent implements OnInit{
     private authService: AuthService,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private location: Location
+    private location: Location,
+    private router: Router
   ){}
 
   ngOnInit(): void{
@@ -71,5 +72,10 @@ export class UserPageComponent implements OnInit{
 
   goBack(){
     this.location.back();
+  }
+
+  gotoDetail(post){
+    if(!post.isShielded)
+      this.router.navigate(['/readPost', post._id]);
   }
 }

@@ -26,7 +26,8 @@ export class EditPostComponent {
     title: '',
     text: '',
     userId: '',
-    createdAt: ''
+    createdAt: '',
+    isShielded: false
   };
 
   constructor(

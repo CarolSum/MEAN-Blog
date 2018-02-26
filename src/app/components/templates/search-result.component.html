@@ -5,8 +5,9 @@
     <div class="row">
       <div class="col-md-10 col-md-push-2 describe">
         <h2 class="post-heading">{{post.title}}</h2>
-        <p class="lead">{{post.text}}</p>
-        <span><a class="btn btn-primary" [routerLink]="['/readPost', post._id]" role="button">详情</a></span>
+        <p class="lead" *ngIf="!post.isShielded">{{post.text}}</p>
+        <p class="lead" *ngIf="post.isShielded">该内容已被管理员隐藏</p>
+        <span><button class="btn btn-primary" (click)="gotoDetail(post)">详情</button></span>
       </div>
       <div class="col-md-2 col-md-pull-10">
         <img class="img-responsive center-block" src="images/1.jpg" alt="Post Cover">

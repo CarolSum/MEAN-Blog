@@ -3,4 +3,5 @@ export class Post{
   text: string;
   userId: string;
   createdAt: string;
+  isShielded: boolean;
 }

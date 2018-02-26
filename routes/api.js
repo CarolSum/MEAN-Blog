@@ -70,7 +70,8 @@ router.post('/post', function(req, res, next) {
     title: req.body.title,
     text: req.body.text,
     userId: req.body.userId,
-    createdAt: moment().format('YYYY-MM-DD HH:mm')
+    createdAt: moment().format('YYYY-MM-DD HH:mm'),
+    isShielded: false
   }
   Post.create(newPost, function (err, post) {
     if (err) { console.log(err); return next(err); }

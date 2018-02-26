@@ -6,7 +6,8 @@ var PostSchema = new mongoose.Schema({
   title: String,
   text: String,
   userId: { type: Schema.Types.ObjectId, ref: 'User'},
-  createdAt: String
+  createdAt: String,
+  isShielded: Boolean
 });
 
 module.exports = mongoose.model('Post', PostSchema);
