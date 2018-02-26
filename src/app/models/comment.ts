@@ -3,4 +3,5 @@ export class Comment{
   content: string;
   userId: string;
   createdAt: string;
+  isShielded: boolean;
 }

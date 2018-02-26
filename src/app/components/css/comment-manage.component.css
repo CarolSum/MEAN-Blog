@@ -1,29 +1,63 @@
-
-@media (min-width: 1200px) {
-  .post-heading{
-    font-size: 20px;
-  }
-}
-
-.post-heading{
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -1px;
+.blog-comment h2{
   margin-top: 20px;
+  margin-bottom: 0px;
+  border-bottom: 1px dashed #e5e5e5;
 }
 
-.lead{
-  font-size: 16px;
-  margin-bottom: 10px;
+.comment-item{
+  padding: 10px;
+  border-bottom: 1px dashed #e5e5e5;
 }
 
-.post-item{
-  margin-top: 20px;
-}
-.post-item:hover{
+.comment-item:hover{
   background-color: #eee;
 }
 
-.describe{
-  padding-bottom: 16px;
+.comment-body, .comment-head{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.comment-area{
+  padding-bottom: 20px; 
+}
+.comment-meta{
+  color: #ccc;
+  padding-left: 10px;
+}
+.floor{
+  float: right;
+  margin-left: 10px;
+  clear: both;
+}
+.submit-comment-btn{
+  clear: both;
+}
+
+.btn-redBorder{
+  float: right;
+  border: 1px solid #ca0c16;
+  color: #ca0c16;
+  background-color: #fff;
+  margin-right: 5px;
+}
+
+.btn-redBorder:hover{
+  color: #fff;
+  background-color: #ca0c16;
+}
+
+.btn-bar{
+  display: inline-block;
+  float: right;
+}
+
+.del-comm-btn{
+  border-radius: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.btn-default{
+  margin-right: 5px;
 }

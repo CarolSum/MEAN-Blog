@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from '../services/auth.service';
 
-import { Post } from '../models/post';
+import { Comment } from '../models/comment';
 
 @Component({
   selector: 'manage-comment',
@@ -12,7 +12,7 @@ import { Post } from '../models/post';
 })
 
 export class CommentManageComponent implements OnInit{
-  posts: Post[];
+  comments: Comment[];
   curUser: {};
 
   constructor(
@@ -21,12 +21,26 @@ export class CommentManageComponent implements OnInit{
   ){}
 
   ngOnInit(): void{
-    this.http.get<Post[]>('/api/posts').subscribe(data => {
-      this.posts = data;
-      this.posts.forEach(function(post, i){
-        post.text = post.text.substr(0, 50) + '...';
-      })
+    this.http.get<Comment[]>('/api/comments').subscribe(data => {
+      this.comments = data;
     });
     this.curUser = this.authService.getObject('user');
+  }
+
+  shield(comment){
+    this.http.put('/api/comment/'+comment._id, {isShielded: true}).subscribe();
+    comment.isShielded = true;
+  }
+
+  Unshield(comment){
+    this.http.put('/api/comment/'+comment._id, {isShielded: false}).subscribe();
+    comment.isShielded = false;
+  }
+
+  deleteComment(comment){
+    this.http.delete('/api/comment/'+comment._id).subscribe();
+    this.http.get<Comment[]>('/api/comments').subscribe(data => {
+      this.comments = data;
+    });
   }
 }

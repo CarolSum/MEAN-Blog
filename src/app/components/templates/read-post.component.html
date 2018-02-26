@@ -91,7 +91,8 @@
           <span class="floor comment-meta">{{i+1}}楼</span>
           <span class="floor"  *ngIf="curUser != {} && curUser._id == comment.userId._id "><button class="btn btn-default del-comm-btn" (click)="deleteComment(comment._id)">删除</button></span>
         </div>
-        <p class="comment-body">{{comment.content}}</p>
+        <p class="comment-body" *ngIf="!comment.isShielded">{{comment.content}}</p>
+        <p class="comment-body" *ngIf="comment.isShielded">该内容已被管理员隐藏</p>
       </div>
 
       <div class="comment-item" *ngIf="curUser != {}">

@@ -195,7 +195,8 @@ router.post('/comment', function(req, res, next){
     postId: postId,
     content: content,
     userId: userId,
-    createdAt: moment().format('YYYY-MM-DD HH:mm')
+    createdAt: moment().format('YYYY-MM-DD HH:mm'),
+    isShielded: false
   }
 
   Comment.create(cm, function(err, data){
@@ -209,6 +210,18 @@ router.post('/comment', function(req, res, next){
 
 });
 
+/* Get All Comments */
+router.get('/comments', function(req, res, next) {
+  Comment.find({})
+    .populate('userId')
+    .populate('postId')
+    .exec(function(err, comments){
+      if(err) return next(err);
+      res.json(comments);
+    });
+});
+
+
 
 /* GET COMMENTS OF A POST */
 router.get('/comments/:postId', function(req, res, next){
@@ -220,6 +233,14 @@ router.get('/comments/:postId', function(req, res, next){
     })
 });
 
+
+/* UPDATE COMMENT */
+router.put('/comment/:id', function(req, res, next) {
+  Comment.findByIdAndUpdate(req.params.id, req.body, function (err, docs) {
+    if (err) return next(err);
+    res.json(docs);
+  });
+});
 
 /* DELETE A COMMENT */
 router.delete('/comment/:id', function(req, res, next) {

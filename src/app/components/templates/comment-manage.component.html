@@ -1,20 +1,22 @@
-<div class="container">
-  <h2>博客列表</h2>
-  <p>当前共有{{posts.length}}篇</p>
-  <div *ngFor="let post of posts" class="post-item">
-    <div class="row">
-      <div class="col-md-10 col-md-push-2 describe">
-        <h2 class="post-heading">{{post.title}}</h2>
-        <p class="lead">{{post.text}}</p>
-        <span><a class="btn btn-primary" [routerLink]="['/readPost', post._id]" role="button">详情</a></span>
-        <span *ngIf="curUser.gender === 'adm' "><a class="btn btn-default" [routerLink]="['/deletePost', post._id]" role="button">屏蔽</a></span>
-        <span *ngIf="curUser.gender === 'adm' "><a class="btn btn-danger" [routerLink]="['/deletePost', post._id]" role="button">删除</a></span>
-      </div>
-      <div class="col-md-2 col-md-pull-10">
-        <img class="img-responsive center-block" src="images/1.jpg" alt="Post Cover">
+<div class="container blog-comment">
+  <div class="row">
+    <div class="col-sm-8 comment-area">
+      <h2>所有评论</h2>
+      <div class="comment-item clearfix" *ngFor="let comment of comments; index as i">
+        <div class="comment-head">
+          <a [routerLink]="['/user', comment.userId._id, 1]">{{comment.userId.username}}</a>
+          对博客
+          <a [routerLink]="['/readPost', comment.postId._id]">{{comment.postId.title}}</a>
+          发表了如下评论
+          <span class="floor comment-meta">{{comment.createdAt}}</span>
+<!--           <span class="floor"  *ngIf="curUser.gender === 'adm' "><button class="btn btn-default del-comm-btn" (click)="deleteComment(comment)">删除</button></span> -->
+        </div>
+        <p class="comment-body">{{comment.content}}</p>
+        <div class="btn-bar clearfix"><button class="btn btn-redBorder" (click)="deleteComment(comment)">删除</button></div>
+        <div class="btn-bar clearfix" *ngIf=" comment.isShielded == false"><button class="btn btn-redBorder" (click)="shield(comment)">屏蔽</button></div>
+        <div class="btn-bar clearfix" *ngIf=" comment.isShielded == true"><button class="btn btn-default" (click)="Unshield(comment)">取消屏蔽</button></div>
+
       </div>
     </div>
-    <hr>
   </div>
-  <button (click)="goBack()" class="btn btn-default">Back</button>
 </div>
