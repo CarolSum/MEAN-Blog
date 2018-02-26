@@ -9,6 +9,7 @@ import { DeletePostComponent } from './components/delete-post.component';
 import { SignInComponent } from './components/sign-in.component';
 import { SignUpComponent } from './components/sign-up.component';
 import { UserPageComponent } from './components/user-page.component';
+import { SearchResultComponent } from './components/search-result.component';
 
 const routes: Routes = [
   { path: '',  component: PostsComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'user/:id/:page', component: UserPageComponent },
+  { path: 'search/:term', component: SearchResultComponent },
 ];
  
 @NgModule({

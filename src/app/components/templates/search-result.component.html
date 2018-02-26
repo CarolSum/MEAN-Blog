@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>搜索{{searchTerm}}的结果</h2>
+  <p>共有{{posts.length}}条记录~</p>
+  <div *ngFor="let post of posts" class="post-item">
+    <div class="row">
+      <div class="col-md-10 col-md-push-2 describe">
+        <h2 class="post-heading">{{post.title}}</h2>
+        <p class="lead">{{post.text}}</p>
+        <span><a class="btn btn-primary" [routerLink]="['/readPost', post._id]" role="button">详情</a></span>
+      </div>
+      <div class="col-md-2 col-md-pull-10">
+        <img class="img-responsive center-block" src="images/1.jpg" alt="Post Cover">
+      </div>
+    </div>
+    <hr>
+  </div>
+  <button (click)="goBack()" class="btn btn-default">Back</button>
+</div>

@@ -15,9 +15,12 @@ import { BannerComponent } from './components/banner.component';
 import { SignInComponent } from './components/sign-in.component';
 import { SignUpComponent } from './components/sign-up.component';
 import { UserPageComponent } from './components/user-page.component';
+import { SearchResultComponent } from './components/search-result.component';
 
 import { PostService } from './services/post.service';
 import { AuthService } from './services/auth.service';
+import { PostSearchService } from './services/post-search.service';
+
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -39,11 +42,13 @@ import { AppRoutingModule } from './app-routing.module';
     BannerComponent,
     SignInComponent,
     SignUpComponent,
-    UserPageComponent
+    UserPageComponent,
+    SearchResultComponent
   ],
   providers: [
     PostService,
-    AuthService
+    AuthService,
+    PostSearchService
   ],
   bootstrap:    [ AppComponent ]
 })

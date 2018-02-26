@@ -11,11 +11,21 @@ var Comment = require('../models/Comment.js');
 
 /* GET ALL Posts. */
 router.get('/posts', function(req, res, next) {
-  Post.find(function(err, posts){
-    if(err) return next(err);
-    console.log(posts);
-    res.json(posts);
-  });
+  if(req.query.title){
+    Post.$where('this.title.indexOf("' + req.query.title + '") >= 0')
+      .exec(function(err, posts){
+        if(err) return next(err);
+          console.log(posts);
+          res.json(posts);
+        })
+  }else{
+    Post.find(function(err, posts){
+      if(err) return next(err);
+      console.log(posts);
+      res.json(posts);
+    });
+  }
+  
 });
 
 /* GET Posts Number Of A User. */
