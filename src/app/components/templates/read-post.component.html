@@ -30,9 +30,9 @@
     <div class="col-sm-8 blog-main">
       <div class="blog-post">
         <h2 class="blog-post-title">{{post.title}}</h2>
-        <p class="blog-post-meta">January 1, 2014 by <a  [routerLink]="['/user', post.userId._id, 1]">{{post.userId.username}}</a></p>
+        <p class="blog-post-meta">{{post.createdAt}} by <a  [routerLink]="['/user', post.userId._id, 1]">{{post.userId.username}}</a></p>
         <hr>
-        <p>{{post.text}}</p>
+        <markdown>{{post.text}}</markdown>
       </div><!-- /.blog-post -->
 
       <nav>
