@@ -3,6 +3,7 @@ import { Location }  from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from '../services/auth.service';
+import { NotificationsService } from 'angular2-notifications';
 import { Post } from '../models/post';
 
 @Component({
@@ -25,7 +26,8 @@ export class AddPostComponent {
   constructor(
     private authService: AuthService,
     private location: Location,
-    private http: HttpClient
+    private http: HttpClient,
+    private _notificationsService: NotificationsService
   ){}
 
   submitPost(): void{
@@ -34,6 +36,15 @@ export class AddPostComponent {
       text: this.form.text,
       userId: this.form.userId,
     }).subscribe();
+    this._notificationsService.success(
+      '发表成功',
+      '请到博客主页或个人主页查看',
+      {
+          timeOut: 2000,
+          showProgressBar: true,
+          pauseOnHover: false,
+          clickToClose: false
+      });
     this.location.back();
   }
 

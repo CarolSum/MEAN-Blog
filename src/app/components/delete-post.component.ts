@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
-import { PostService } from '../services/post.service';
+import { NotificationsService } from 'angular2-notifications';
 import 'rxjs/add/operator/switchMap';
 import { Post } from '../models/post';
 
@@ -25,10 +25,10 @@ export class DeletePostComponent implements OnInit {
   };
   
   constructor(
-    private postService: PostService,
     private route: ActivatedRoute,
     private location: Location,
-    private http: HttpClient
+    private http: HttpClient,
+    private _notificationsService: NotificationsService
   ){}
 
   ngOnInit(): void{
@@ -45,6 +45,15 @@ export class DeletePostComponent implements OnInit {
   deletePost(): void{
     this.http.delete('/api/post/'+this.route.snapshot.params['id']).subscribe();
     this.http.delete('/api/comments/'+this.route.snapshot.params['id']).subscribe();
+    this._notificationsService.info(
+      '成功删除博客',
+      '删除的博客无法恢复哦~',
+      {
+          timeOut: 2000,
+          showProgressBar: true,
+          pauseOnHover: false,
+          clickToClose: false
+      });
     this.location.back();
   }
 }

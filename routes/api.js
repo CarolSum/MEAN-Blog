@@ -124,7 +124,9 @@ router.post('/createUser', function(req, res, next){
     }
   } catch (e) {
     console.log(e.message);
-    res.json(false);
+    res.json({
+      msg: e.message
+    });
     return;
   }
 
@@ -138,11 +140,15 @@ router.post('/createUser', function(req, res, next){
 
   User.create(user, function (err, data) {
     if (err) { 
-      console.log(err.message); 
-      res.json(false);
+      console.log(err); 
+      res.json({
+        msg: 'duplicate'
+      });
       return;
     }
-    res.json(data);
+    res.json({
+      msg: 'success'
+    });
   });
 
 });

@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
-import { PostService } from '../services/post.service';
+import { NotificationsService } from 'angular2-notifications';
 import 'rxjs/add/operator/switchMap';
 import { Post } from '../models/post';
 
@@ -31,7 +31,7 @@ export class EditPostComponent {
   };
 
   constructor(
-    private postService: PostService,
+    private _notificationsService: NotificationsService,
     private route: ActivatedRoute,
     private location: Location,
     private http: HttpClient
@@ -57,6 +57,15 @@ export class EditPostComponent {
 
   editPost(): void{
     this.http.put('/api/post/'+this.route.snapshot.params['id'], this.form).subscribe();
+    this._notificationsService.info(
+      '成功修改博客',
+      '请到文章详情页查看~',
+      {
+          timeOut: 2000,
+          showProgressBar: true,
+          pauseOnHover: false,
+          clickToClose: false
+      });
     this.location.back();
   }
 }

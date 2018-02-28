@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MarkdownModule } from 'angular2-markdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { AppComponent }  from './app.component';
 import { PostsComponent } from './components/posts.component';
@@ -33,6 +36,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
+    SimpleNotificationsModule.forRoot(),
+    BrowserAnimationsModule
   ],
   declarations: [ 
     AppComponent,
