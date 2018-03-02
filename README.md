@@ -17,7 +17,7 @@ use npm install && npm start to run the project.
 
 ###评论博客
 
-添加用户评论功能，尚未对评论表单进行验证
+添加用户评论功能
 评论可以删除但无法修改，参考csdn评论功能
 
 ###管理员权限
@@ -25,6 +25,8 @@ use npm install && npm start to run the project.
 管理员可以对博客及评论进行屏蔽、删除操作
 
 屏蔽内容显示“该内容已被管理员隐藏”
+
+管理员账号: admin & admin123456
 
 ## ToDo
 
@@ -49,7 +51,7 @@ use npm install && npm start to run the project.
  6. 评论增加回复功能
  7. 全局消息通知      √ (登录登出无法发出通知：原因：存在页面刷新)
  8. 评论框未登录是否可用
- 9. 完善express路由     ————目前将其他路径重定向至根目录
+ 9. 完善express路由     √ 404错误处理，转发到前端
  10. 评论数、阅读量
  11. 页面搜索功能     √ 搜索功能待加入分页
  12. 首页轮播图组件
