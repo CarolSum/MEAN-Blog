@@ -47,7 +47,6 @@ export class EditPostComponent {
       this.post = data;
       this.form.title = data.title;
       this.form.text = data.text;
-      console.log(data);
     });
   }
 

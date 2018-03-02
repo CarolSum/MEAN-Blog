@@ -33,7 +33,6 @@ export class SearchResultComponent implements OnInit{
   searchPostsByTitle(term){
     this.http.get<Post[]>('/api/posts?title='+term)
       .subscribe(data => {
-        console.log(data);
         this.posts = data;
         this.posts.forEach(function(post, i){
           post.text = post.text.substr(0, 50) + '...';

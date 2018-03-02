@@ -44,7 +44,6 @@ export class ReadPostComponent implements OnInit {
     }
     this.http.get<Comment[]>('/api/comments/'+this.form.postId)
       .subscribe(data => {
-        console.log(data);
         this.comments = data;
       })
   }
@@ -52,7 +51,6 @@ export class ReadPostComponent implements OnInit {
   getPostDetail(id){
     this.http.get<Post>('/api/post/'+id).subscribe(data => {
       this.post = data;
-      console.log(data);
     });
   }
 
@@ -65,7 +63,6 @@ export class ReadPostComponent implements OnInit {
       if(res){
         this.http.get<Comment[]>('/api/comments/'+this.form.postId)
         .subscribe(data => {
-          console.log(data);
           this.comments = data;
         })
         this.form.content = '';
@@ -106,7 +103,6 @@ export class ReadPostComponent implements OnInit {
       });
     this.http.get<Comment[]>('/api/comments/'+this.form.postId)
       .subscribe(data => {
-        console.log(data);
         this.comments = data;
       })
   }

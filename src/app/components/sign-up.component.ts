@@ -34,7 +34,6 @@ export class SignUpComponent implements OnInit {
   createUser(){
     this.http.post<resultMsg>('/api/createUser', this.newUser)
       .subscribe(res => {
-        console.log(res);
         if(res.msg == 'success'){
           this._notificationsService.success(
             '注册成功',
@@ -69,7 +68,6 @@ export class SignUpComponent implements OnInit {
         } 
         
       }, (err) => {
-        console.log(err);
       })
   }
 

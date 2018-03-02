@@ -43,24 +43,11 @@ export class BannerComponent implements OnInit {
   ngOnInit(): void{
     this.isLogin = this.authService.get('isLogin');
     this.user = this.authService.getObject('user');
-/*
-    this.searchResult = this.searchTerms
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => term
-        ? this.postSearchService.search(term)
-        : Observable.of<Post[]>([]))
-      .catch(err => {
-        console.log(err);
-        return Observable.of<Post[]>([]);
-      });
-*/
   }
 
   SignOut(){
     this.authService.remove('user');
     this.authService.remove('isLogin');
-    console.log('signout-signout-signout');
     window.location.href = '/';
     //this.router.navigate(['/']);
   }

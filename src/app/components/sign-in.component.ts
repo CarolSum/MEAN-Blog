@@ -30,12 +30,10 @@ export class SignInComponent implements OnInit {
   login(){
     this.http.post('/api/login', this.loginUser)
       .subscribe(res => {
-        console.log(res);
         if(res != false && res != null){
           //登录成功
           this.authService.setObject('user',res);
           this.authService.set('isLogin', 'true');
-          console.log(this.authService.get('isLogin'));
           
           this._notificationsService.success(
             '登录成功',
@@ -71,7 +69,6 @@ export class SignInComponent implements OnInit {
         }
         
       }, (err) => {
-        console.log(err);
       })
   }
 }

@@ -47,7 +47,6 @@ export class UserPageComponent implements OnInit{
     this.curPage = page;
     this.http.get<Post[]>('/api/posts/'+id+'/'+page)
       .subscribe(data => {
-        console.log(data);
         this.posts = data;
         this.posts.forEach(function(post, i){
           post.text = post.text.substr(0, 50) + '...';
@@ -56,7 +55,6 @@ export class UserPageComponent implements OnInit{
     this.curUser = this.authService.getObject('user');
     this.http.get('/api/targetUser/'+id)
       .subscribe(data => {
-        console.log(data);
         this.target = data;
       });
 

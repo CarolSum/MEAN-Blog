@@ -34,7 +34,6 @@ export class DeletePostComponent implements OnInit {
   ngOnInit(): void{
     this.http.get<Post>('/api/post/'+this.route.snapshot.params['id']).subscribe(data => {
       this.post = data;
-      console.log(data);
     });
   }
 

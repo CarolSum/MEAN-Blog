@@ -26,7 +26,7 @@ use npm install && npm start to run the project.
 
 屏蔽内容显示“该内容已被管理员隐藏”
 
-管理员账号: admin & admin123456
+管理员账密: admin & admin123
 
 ## ToDo
 
