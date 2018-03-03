@@ -2,12 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
 
-## Build
+## 使用
 
-use npm install && npm start to run the project.
+npm install 安装依赖。
+
+use npm start to run the project. 
+执行npm start的话angular cli会重新编译打包文件到dist目录。
+需要将dist目录里所有文件复制到public目录下，然后node ./bin/www启动程序。
 
 如果不想重新build，可以直接运行node ./bin/www
-执行npm start的话angular cli会重新编译打包文件到dist目录。
+
+###注意
+
+一开始没有任何博客数据的时候主页是空白的，可以创建一个新账号然后发表文章
+
+管理员功能需要创建一个管理员账号。（将数据库里一个用户的gender属性改为adm，使其拥有管理权限
 
 ## 功能
 
@@ -36,7 +45,7 @@ use npm install && npm start to run the project.
     -管理博客权限 ------√
     -管理评论权限 ------√
 
-    分页机制    √ (最左最右两端的按钮未完成)
+    分页机制    √ (在用户详情页显示该用户所有文章的时候采用了简单的分页，为了方便查看每页最多显示2条博客)
  3. mongoose populate   √
 
     post详情页获取该博客发布的时间与作者,作者的简介----即填充作者的相关信息    √
